@@ -13,7 +13,7 @@ class CurrencyLoaderTest extends TestCase
     protected static $methods;
 
     /** @test */
-    public function it_returns_courrencies_longlist()
+    public function it_returns_courrencies_longlist(): void
     {
         $this->assertEquals(165, count(CurrencyLoader::currencies(true)));
         $this->assertArrayHasKey('EGP', CurrencyLoader::currencies());
@@ -25,7 +25,7 @@ class CurrencyLoaderTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_courrencies_shortlist()
+    public function it_returns_courrencies_shortlist(): void
     {
         $this->assertEquals(165, count(CurrencyLoader::currencies()));
         $this->assertArrayHasKey('EGP', CurrencyLoader::currencies());

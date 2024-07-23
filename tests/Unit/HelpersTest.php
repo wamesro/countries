@@ -10,7 +10,7 @@ use PHPUnit\Framework\TestCase;
 class HelpersTest extends TestCase
 {
     /** @test */
-    public function it_returns_country_data()
+    public function it_returns_country_data(): void
     {
         $egypt = [
             'name' => [
@@ -116,7 +116,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_country_array_shortlist()
+    public function it_returns_country_array_shortlist(): void
     {
         $this->assertEquals(250, count(countries()));
         $this->assertIsArray(countries()['eg']);
@@ -125,7 +125,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_courrencies_longlist()
+    public function it_returns_courrencies_longlist(): void
     {
         $this->assertEquals(165, count(currencies(true)));
         $this->assertArrayHasKey('EGP', currencies());
@@ -137,7 +137,7 @@ class HelpersTest extends TestCase
     }
 
     /** @test */
-    public function it_returns_courrencies_shortlist()
+    public function it_returns_courrencies_shortlist(): void
     {
         $this->assertEquals(165, count(currencies()));
         $this->assertArrayHasKey('EGP', currencies());
