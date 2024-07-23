@@ -14,8 +14,6 @@ class CurrencyLoader
      * @param bool $longlist states if need all the details of the currencies or only the keys
      *
      * @throws CountryLoaderException
-     *
-     * @return array
      */
     public static function currencies($longlist = false): array
     {
