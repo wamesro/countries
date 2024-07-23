@@ -54,9 +54,7 @@ class CountryLoader
             static::$countries[$list] = json_decode(static::getFile(__DIR__.'/../resources/data/'.$list.'.json'), true);
         }
 
-        return $hydrate ? array_map(function ($country) {
-            return new Country($country);
-        }, static::$countries[$list]) : static::$countries[$list];
+        return $hydrate ? array_map(fn($country) => new Country($country), static::$countries[$list]) : static::$countries[$list];
     }
 
     /**
