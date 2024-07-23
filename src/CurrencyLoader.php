@@ -25,10 +25,12 @@ class CurrencyLoader
             foreach ($countries as $country) {
                 if ($longlist) {
                     foreach ($country['currency'] as $currency => $details) {
-                        ! $currency || static::$currencies[$list][$currency] = $longlist ? $details : $currency;
+                        if ($currency) {
+                            static::$currencies[$list][$currency] = $longlist ? $details : $currency;
+                        }
                     }
-                } else {
-                    ! $country['currency'] || static::$currencies[$list][$country['currency']] = $country['currency'];
+                } elseif ($country['currency']) {
+                    static::$currencies[$list][$country['currency']] = $country['currency'];
                 }
             }
         }
