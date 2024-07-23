@@ -66,11 +66,10 @@ class Country
      * Set single attribute.
      *
      * @param string $key
-     * @param mixed  $value
      *
      * @return $this
      */
-    public function set($key, $value)
+    public function set($key, mixed $value)
     {
         $this->attributes[$key] = $value;
 
@@ -81,11 +80,10 @@ class Country
      * Get an item from attributes array using "dot" notation.
      *
      * @param string $key
-     * @param mixed  $default
      *
      * @return mixed
      */
-    public function get($key, $default = null)
+    public function get($key, mixed $default = null)
     {
         $array = $this->attributes;
 

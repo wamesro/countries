@@ -61,14 +61,12 @@ class CountryLoader
      * Filter items by the given key value pair.
      *
      * @param string $key
-     * @param mixed  $operator
-     * @param mixed  $value
      *
      * @throws \Rinvex\Country\CountryLoaderException
      *
      * @return array
      */
-    public static function where($key, $operator, $value = null)
+    public static function where($key, mixed $operator, mixed $value = null)
     {
         if (func_num_args() === 2) {
             $value = $operator;
@@ -87,11 +85,10 @@ class CountryLoader
      *
      * @param string $key
      * @param string $operator
-     * @param mixed  $value
      *
      * @return \Closure
      */
-    protected static function operatorForWhere($key, $operator, $value)
+    protected static function operatorForWhere($key, $operator, mixed $value)
     {
         return function ($item) use ($key, $operator, $value) {
             $retrieved = static::get($item, $key);
@@ -132,13 +129,11 @@ class CountryLoader
     /**
      * Get an item from an array or object using "dot" notation.
      *
-     * @param mixed        $target
      * @param string|array $key
-     * @param mixed        $default
      *
      * @return mixed
      */
-    protected static function get($target, $key, $default = null)
+    protected static function get(mixed $target, $key, mixed $default = null)
     {
         if (is_null($key)) {
             return $target;
