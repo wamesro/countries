@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+use Rinvex\Country\Country;
 
 use Rinvex\Country\CountryLoader;
 use Rinvex\Country\CurrencyLoader;
@@ -12,7 +13,7 @@ if (! function_exists('country')) {
      * @param string $code
      * @param bool   $hydrate
      *
-     * @return \Rinvex\Country\Country|array
+     * @return Country|array
      */
     function country($code, $hydrate = true)
     {

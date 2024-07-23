@@ -16,10 +16,10 @@ class CountryTest extends TestCase
     /** @var array */
     protected $longAttributes;
 
-    /** @var \Rinvex\Country\Country */
+    /** @var Country */
     protected $shortCountry;
 
-    /** @var \Rinvex\Country\Country */
+    /** @var Country */
     protected $longCountry;
 
     protected function setUp(): void

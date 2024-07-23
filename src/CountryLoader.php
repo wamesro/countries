@@ -21,9 +21,9 @@ class CountryLoader
      * @param string $code
      * @param bool   $hydrate
      *
-     * @throws \Rinvex\Country\CountryLoaderException
+     * @throws CountryLoaderException
      *
-     * @return \Rinvex\Country\Country|array
+     * @return Country|array
      */
     public static function country($code, $hydrate = true)
     {
@@ -42,7 +42,7 @@ class CountryLoader
      * @param bool $longlist
      * @param bool $hydrate
      *
-     * @throws \Rinvex\Country\CountryLoaderException
+     * @throws CountryLoaderException
      *
      * @return array
      */
@@ -62,7 +62,7 @@ class CountryLoader
      *
      * @param string $key
      *
-     * @throws \Rinvex\Country\CountryLoaderException
+     * @throws CountryLoaderException
      *
      * @return array
      */
@@ -86,7 +86,7 @@ class CountryLoader
      * @param string $key
      * @param string $operator
      *
-     * @return \Closure
+     * @return Closure
      */
     protected static function operatorForWhere($key, $operator, mixed $value)
     {
@@ -226,7 +226,7 @@ class CountryLoader
      *
      * @param string $filePath
      *
-     * @throws \Rinvex\Country\CountryLoaderException
+     * @throws CountryLoaderException
      *
      * @return string
      */

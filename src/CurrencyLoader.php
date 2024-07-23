@@ -13,7 +13,7 @@ class CurrencyLoader
      *
      * @param bool $longlist states if need all the details of the currencies or only the keys
      *
-     * @throws \Rinvex\Country\CountryLoaderException
+     * @throws CountryLoaderException
      *
      * @return array
      */
