@@ -170,10 +170,8 @@ class CountryLoader
      * @param array             $array
      * @param string|array      $value
      * @param string|array|null $key
-     *
-     * @return array
      */
-    protected static function pluck($array, $value, $key = null)
+    protected static function pluck($array, $value, $key = null): array
     {
         $results = [];
 
@@ -203,10 +201,8 @@ class CountryLoader
      * Collapse an array of arrays into a single array.
      *
      * @param array $array
-     *
-     * @return array
      */
-    protected static function collapse($array)
+    protected static function collapse($array): array
     {
         $results = [];
 
