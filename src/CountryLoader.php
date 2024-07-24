@@ -114,10 +114,8 @@ class CountryLoader
      *
      * @param array         $items
      * @param callable|null $callback
-     *
-     * @return array
      */
-    protected static function filter($items, callable $callback = null)
+    protected static function filter($items, callable $callback = null): array
     {
         if ($callback) {
             return array_filter($items, $callback, ARRAY_FILTER_USE_BOTH);
@@ -226,7 +224,7 @@ class CountryLoader
      *
      * @return string
      */
-    protected static function getFile($filePath)
+    protected static function getFile($filePath): string | false
     {
         if (! file_exists($filePath)) {
             throw CountryLoaderException::invalidCountry();

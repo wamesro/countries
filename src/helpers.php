@@ -42,10 +42,8 @@ if (! function_exists('currencies')) {
      *
      * @param bool $longlist
      * @param bool $hydrate
-     *
-     * @return array
      */
-    function currencies($longlist = false)
+    function currencies($longlist = false): array
     {
         return CurrencyLoader::currencies($longlist);
     }
