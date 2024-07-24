@@ -12,7 +12,7 @@ class CountryServiceProvider extends ServiceProvider
     /**
      * {@inheritdoc}
      */
-    public function boot()
+    public function boot(): void
     {
         // Add country validation rule
         Validator::extend('country', fn($attribute, $value): bool => is_string($value) && mb_strlen($value) === 2 && array_key_exists(mb_strtolower($value), countries()), __('validation.invalid_country'));
