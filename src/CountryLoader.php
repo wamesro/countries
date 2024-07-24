@@ -63,10 +63,8 @@ class CountryLoader
      * @param string $key
      *
      * @throws CountryLoaderException
-     *
-     * @return array
      */
-    public static function where($key, mixed $operator, mixed $value = null)
+    public static function where($key, mixed $operator, mixed $value = null): array
     {
         if (func_num_args() === 2) {
             $value = $operator;
