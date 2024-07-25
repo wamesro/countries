@@ -6,13 +6,14 @@ namespace Rinvex\Country\Tests\Unit;
 
 use PHPUnit\Framework\TestCase;
 use Rinvex\Country\CurrencyLoader;
+use PHPUnit\Framework\Attributes\Test;
 
 class CurrencyLoaderTest extends TestCase
 {
     /** @var array */
     protected static $methods;
 
-    /** @test */
+    #[Test]
     public function it_returns_courrencies_longlist(): void
     {
         $this->assertEquals(165, count(CurrencyLoader::currencies(true)));
@@ -24,7 +25,7 @@ class CurrencyLoaderTest extends TestCase
         $this->assertEquals('2', CurrencyLoader::currencies(true)['EGP']['iso_4217_minor_unit']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_courrencies_shortlist(): void
     {
         $this->assertEquals(165, count(CurrencyLoader::currencies()));

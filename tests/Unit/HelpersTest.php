@@ -6,10 +6,11 @@ namespace Rinvex\Country\Tests\Unit;
 
 use Rinvex\Country\Country;
 use PHPUnit\Framework\TestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 class HelpersTest extends TestCase
 {
-    /** @test */
+    #[Test]
     public function it_returns_country_data(): void
     {
         $egypt = [
@@ -115,7 +116,7 @@ class HelpersTest extends TestCase
         $this->assertEquals(new Country($egypt), country('eg'));
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_country_array_shortlist(): void
     {
         $this->assertEquals(250, count(countries()));
@@ -124,7 +125,7 @@ class HelpersTest extends TestCase
         $this->assertArrayNotHasKey('geo', countries()['eg']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_courrencies_longlist(): void
     {
         $this->assertEquals(165, count(currencies(true)));
@@ -136,7 +137,7 @@ class HelpersTest extends TestCase
         $this->assertEquals('2', currencies(true)['EGP']['iso_4217_minor_unit']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_courrencies_shortlist(): void
     {
         $this->assertEquals(165, count(currencies()));

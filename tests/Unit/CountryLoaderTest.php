@@ -8,6 +8,7 @@ use ReflectionClass;
 use Rinvex\Country\Country;
 use PHPUnit\Framework\TestCase;
 use Rinvex\Country\CountryLoader;
+use PHPUnit\Framework\Attributes\Test;
 use Rinvex\Country\CountryLoaderException;
 
 class CountryLoaderTest extends TestCase
@@ -34,7 +35,7 @@ class CountryLoaderTest extends TestCase
         self::$methods = null;
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_country_data(): void
     {
         $countryArray = [
@@ -140,7 +141,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals(new Country($countryArray), CountryLoader::country('eg'));
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_data_with_where_conditions(): void
     {
         $this->assertEquals(['as', 'au', 'ck', 'fj', 'fm', 'gu', 'ki', 'mh', 'mp', 'nc', 'nf', 'nu', 'nr', 'nz', 'pn', 'pw', 'pg', 'pf', 'sb', 'tk', 'tl', 'to', 'tv', 'um', 'vu', 'wf', 'ws'], array_keys(CountryLoader::where('geo.continent', ['OC' => 'Oceania'])));
@@ -157,7 +158,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals(19, count(array_keys(CountryLoader::where('dialling.national_number_lengths.0', '<', 5))));
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_country_array_shortlist(): void
     {
         $this->assertEquals(250, count(CountryLoader::countries()));
@@ -166,7 +167,7 @@ class CountryLoaderTest extends TestCase
         $this->assertArrayNotHasKey('geo', CountryLoader::countries()['eg']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_country_hydrated_shortlist(): void
     {
         $this->assertEquals(250, count(CountryLoader::countries(false, true)));
@@ -175,7 +176,7 @@ class CountryLoaderTest extends TestCase
         $this->assertNull(CountryLoader::countries(false, true)['eg']->getGeodata());
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_country_array_longlist(): void
     {
         $this->assertEquals(250, count(CountryLoader::countries(true)));
@@ -185,7 +186,7 @@ class CountryLoaderTest extends TestCase
         $this->assertArrayHasKey('geo', CountryLoader::countries(true)['eg']);
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_country_hydrated_longlist(): void
     {
         $this->assertEquals(250, count(CountryLoader::countries(true, true)));
@@ -195,7 +196,7 @@ class CountryLoaderTest extends TestCase
         $this->assertIsArray(CountryLoader::countries(true, true)['eg']->getGeodata());
     }
 
-    /** @test */
+    #[Test]
     public function it_throws_an_exception_when_invalid_country(): void
     {
         $this->expectException(CountryLoaderException::class);
@@ -203,7 +204,7 @@ class CountryLoaderTest extends TestCase
         CountryLoader::country('asd');
     }
 
-    /** @test */
+    #[Test]
     public function it_filters_data(): void
     {
         $array1 = [['id' => 1, 'name' => 'Hello'], ['id' => 2, 'name' => 'World']];
@@ -216,7 +217,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals(['first' => 'Hello', 'second' => 'World'], self::$methods['filter']->invoke(null, $array3, fn($item, $key): bool => $key !== 'id'));
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_data(): void
     {
         $object = (object) ['users' => ['name' => ['Taylor', 'Otwell']]];
@@ -232,13 +233,13 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals('Not found', self::$methods['get']->invoke(null, $dottedArray, ['users', 'last.name'], 'Not found'));
     }
 
-    /** @test */
+    #[Test]
     public function it_returns_target_when_missing_key(): void
     {
         $this->assertEquals(['test'], self::$methods['get']->invoke(null, ['test'], null));
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_data_with_nested_arrays(): void
     {
         $array = [
@@ -262,7 +263,7 @@ class CountryLoaderTest extends TestCase
         $this->assertNull(self::$methods['get']->invoke(null, $array, 'posts.*.date'));
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_data_with_nested_double_nested_arrays_and_collapses_result(): void
     {
         $array = [
@@ -293,7 +294,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals([], self::$methods['get']->invoke(null, $array, 'posts.*.users.*.name'));
     }
 
-    /** @test */
+    #[Test]
     public function it_plucks_array(): void
     {
         $data = [
@@ -329,7 +330,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals([null, null], self::$methods['pluck']->invoke(null, $data, 'foo.bar'));
     }
 
-    /** @test */
+    #[Test]
     public function it_plucks_array_with_array_and_object_values(): void
     {
         $array = [(object) ['name' => 'taylor', 'email' => 'foo'], ['name' => 'dayle', 'email' => 'bar']];
@@ -337,7 +338,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals(['taylor' => 'foo', 'dayle' => 'bar'], self::$methods['pluck']->invoke(null, $array, 'email', 'name'));
     }
 
-    /** @test */
+    #[Test]
     public function it_plucks_array_with_nested_keys(): void
     {
         $array = [['user' => ['taylor', 'otwell']], ['user' => ['dayle', 'rees']]];
@@ -347,7 +348,7 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals(['taylor' => 'otwell', 'dayle' => 'rees'], self::$methods['pluck']->invoke(null, $array, ['user', 1], ['user', 0]));
     }
 
-    /** @test */
+    #[Test]
     public function it_plucks_array_with_nested_arrays(): void
     {
         $array = [
@@ -370,20 +371,20 @@ class CountryLoaderTest extends TestCase
         $this->assertEquals([['foo'], [null, null]], self::$methods['pluck']->invoke(null, $array, 'users.*.email'));
     }
 
-    /** @test */
+    #[Test]
     public function it_collapses_array(): void
     {
         $array = [[1], [2], [3], ['foo', 'bar'], ['baz', 'boom']];
         $this->assertEquals([1, 2, 3, 'foo', 'bar', 'baz', 'boom'], self::$methods['collapse']->invoke(null, $array));
     }
 
-    /** @test */
+    #[Test]
     public function it_gets_file_content(): void
     {
         $this->assertStringEqualsFile(__DIR__.'/../../resources/data/eg.json', self::$methods['getFile']->invoke(null, __DIR__.'/../../resources/data/eg.json'));
     }
 
-    /** @test */
+    #[Test]
     public function it_throws_an_exception_when_invalid_file(): void
     {
         $this->expectException(CountryLoaderException::class);
