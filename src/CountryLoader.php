@@ -145,7 +145,7 @@ class CountryLoader
 
                 $result = static::pluck($target, $key);
 
-                return in_array('*', $key) ? static::collapse($result) : $result;
+                return in_array('*', $key, strict: true) ? static::collapse($result) : $result;
             }
 
             if (is_array($target) && array_key_exists($segment, $target)) {
